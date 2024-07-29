@@ -1,0 +1,29 @@
+@import './../../global.scss';
+
+.main {
+  &-header {
+    text-align: center;
+
+    section {
+      display: grid;
+      grid-gap: calc($spacing * 2);
+      padding: calc($spacing * 5) calc($spacing * 10);
+
+      h1 {
+        margin-bottom: 0;
+      }
+    }
+
+    &__pills {
+      margin-top: calc($spacing * 4);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    &__search {
+      width: 50%;
+      margin: 0 auto;
+    }
+  }
+}

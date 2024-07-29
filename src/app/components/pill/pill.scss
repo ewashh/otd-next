@@ -1,0 +1,20 @@
+@import './../../global.scss';
+
+.pill {
+  border: rgba($black, .2) solid 1px;
+  border-radius: $border-radius;
+  background-color: $white;
+  display: inline-block;
+  padding: calc($spacing/6) $spacing calc($spacing/4) $spacing;
+  margin: calc($spacing/5);
+
+  &:hover {
+    background-color: $black;
+    color: $white;
+    cursor: pointer;
+  }
+
+  &--small {
+    font-size: $small-font-size;
+  }
+}

@@ -1,0 +1,59 @@
+@import './../../global.scss';
+
+.main {
+  &-nav {
+    padding: $spacing calc($spacing * 2.5);
+    position: sticky;
+    top: 0;
+    left: 0;
+    background: rgba($background-color, .95);
+    backdrop-filter: blur(3px);
+    z-index: 2;
+    border-bottom: 1px solid rgba($black, .1);
+
+    &__list {
+      display: grid;
+      grid-template-columns: calc(50% - 5rem) 10rem calc(50% - 5rem);
+      @extend %body;
+
+      & > *:last-child {
+        margin-left: auto;
+      }
+
+      li {
+        display: inline-flex;
+        align-items: center;
+
+        a {
+          display: inline-flex;
+          align-items: center;
+          padding: $spacing calc($spacing * 1.5);
+          font-size: $small-font-size;
+
+          &:hover {
+            opacity: .7;
+          }
+        }
+      }
+
+      div {
+        display: flex;
+
+        &:first-of-type li a {
+          padding-left: 0;
+        }
+      }
+    }
+
+    &__logo {
+      @extend %heading;
+      font-size: $bigger-font-size !important;
+      margin: 0 auto;
+      padding: 0;
+
+      img {
+        max-height: 1em;
+      }
+    }
+  }
+}

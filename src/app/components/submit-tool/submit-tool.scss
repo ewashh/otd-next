@@ -1,0 +1,40 @@
+@import './../../global.scss';
+
+.submit-tool {
+  border-radius: 1rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  grid-gap: $section-padding;
+  background-color: $black;
+  color: $white;
+  text-align: left;
+  padding: $section-padding;
+  margin: $gutter;
+
+  &__header {
+    @extend %heading;
+    font-size: $large-font-size;
+  }
+
+  &__form-content {
+    display: grid;
+  }
+
+  input {
+    border-radius: 0;
+    border-bottom: $border-width rgba($white, 0.2) solid;
+    background-color: transparent;
+    font-size: $bigger-font-size;
+    margin-bottom: calc($spacing * 2);
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .button {
+    background-color: $yellow;
+    color: $black;
+    margin: 0;
+    width: fit-content;
+  }
+}
