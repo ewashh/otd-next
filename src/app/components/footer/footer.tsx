@@ -6,7 +6,7 @@ export default function MainFooter() {
     <nav className="main-footer">
       <ul>
           <li><Link href="/credits">Credits</Link></li>
-          <li><a href="/">Online Tool Dorectory</a></li>
+          <li><a href="/">© 2021 - 2024, Online Tool Directory</a></li>
       </ul>
     </nav>
   );

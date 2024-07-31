@@ -29,7 +29,7 @@ export function ToolCard({ name, description, categories, icon, href }: { name: 
           <ul className="tool-card__categories">
             {categories.map(({id, name}) => (
               <li key={id}>
-                <Pill text={name} size="small"></Pill>
+                <Pill text={name} size="small" href={`/directory/${name}`}></Pill>
               </li>
             ))}
           </ul>

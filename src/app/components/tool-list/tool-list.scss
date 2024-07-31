@@ -1,0 +1,8 @@
+@import './../../global.scss';
+
+.tool-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: $spacing;
+  padding: $section-padding;
+}

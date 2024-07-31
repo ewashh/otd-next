@@ -1,9 +1,10 @@
 import '@/app/components/pill/pill.scss';
+import Link from 'next/link';
 
-export function Pill({ text, color, size = 'regular' }: { text: string, color?: string, size?: 'regular' | 'small' }) {
+export function Pill({ text, color, size = 'regular', href }: { text: string, color?: string, size?: 'regular' | 'small', href: string }) {
   return (
-    <a className={`pill color-${color} pill--${size}`}>
+    <Link className={`pill color-${color} pill--${size}`} href={href}>
       {text}
-    </a>
+    </Link>
   );
 }

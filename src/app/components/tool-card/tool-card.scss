@@ -1,12 +1,5 @@
 @import './../../global.scss';
 
-.tool-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
-  grid-gap: $spacing;
-  padding: $section-padding;
-}
-
 .tool-card {
   border-radius: 1rem;
   border: 1px solid transparent;

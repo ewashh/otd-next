@@ -1,0 +1,12 @@
+@import './../../global.scss';
+
+.main-footer {
+  border-top: 1px solid rgba($black, .1);
+  padding: $spacing calc($spacing * 2.5);
+  font-size: $small-font-size;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+  }
+}
