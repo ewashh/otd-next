@@ -13,7 +13,7 @@ export default function Home() {
         title="Curated list of online tools and resources"
         paragraph="Get your work done better and faster than ever with the best tools on the internet."
       >
-        <Button text="See latest tools"></Button>
+        <Button text="See latest tools" href="/directory"></Button>
         <ul className="pills main-header__pills">
           {categories.map((category) => (
             <li>

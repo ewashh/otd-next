@@ -1,9 +1,10 @@
 import '@/app/components/button/button.scss';
+import Link from 'next/link';
 
-export function Button({ text, size = 'regular' }: { text: string, size?: 'regular' | 'small' | 'big' }) {
+export function Button({ text, size = 'regular', href }: { text: string, size?: 'regular' | 'small' | 'big', href?: string }) {
   return (
-    <a className={`button button--${size}`}>
+    <Link className={`button button--${size}`} href={href ? href : ''}>
       {text}
-    </a>
+    </Link>
   );
 }
