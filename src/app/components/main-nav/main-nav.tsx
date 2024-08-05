@@ -14,7 +14,7 @@ export default function MainNav() {
         </div>
         <li>
           <a href="/" className="main-nav__logo">
-            <Image src={logo}></Image>
+            <Image src={logo} alt="OTD"></Image>
           </a>
         </li>
         <div>
