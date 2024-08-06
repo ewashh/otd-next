@@ -21,10 +21,16 @@
     display: grid;
   }
 
+  label {
+    font-size: $small-font-size;
+    margin-bottom: calc($spacing/2);
+    margin-left: calc($spacing/2);
+  }
+
   input,
   textarea {
     border: 1px solid rgba($white, 0.2);
-    border-radius: $spacing;
+    border-radius: calc($spacing/2);
     background-color: rgba($background-color, .15);
     color: $background-color;
     font-size: $regular-font-size;

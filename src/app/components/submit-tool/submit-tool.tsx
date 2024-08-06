@@ -1,6 +1,6 @@
 "use client"; // This marks the file as a client component
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '@/app/components/submit-tool/submit-tool.scss';
 import { ToolCard } from '../tool-card/tool-card';
 import { Button } from '../button/button';
@@ -11,27 +11,37 @@ export function SubmitTool() {
   const [displayedLink, setDisplayedLink] = useState('');
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const abortControllerRef = useRef<AbortController|null>(null);
+  const [fetchedData, setFetchedData] = useState<{name: string|null, description: string|null}|null>(null);
+  const [focussed, setFocussed] = useState<boolean>(false);
 
-  const fetchWebsiteData = async (url) => {
+  const fetchWebsiteData = async (url: string) => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort(); // Abort the previous request
+    }
+
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
     try {
       setFetching(true);
-      const response = await fetch(`/api/fetch-website-data?url=${encodeURIComponent(url)}`);
+      const response = await fetch(`/api/fetch-website-data?url=${encodeURIComponent(url)}`, {
+        signal: controller.signal
+      });
       if (response.ok) {
         const data = await response.json();
-        console.log('got', data);
-        if (name === '') {
-          setName(data.name);
-        }
-        if (description === '') {
-          setDescription(data.description);
-        }
+        setFetchedData({name: data.name, description: data.description})
       }
     } catch (error) {
       console.error('Error fetching website data:', error);
     } finally {
       setFetching(false);
+      abortControllerRef.current = null;
     }
   };
+
+  useEffect(() => {
+    console.log("fetching: ", fetching)
+  }, [fetching]);
 
   useEffect(() => {
     if (link && isValidURL(link) && (name === '' || description === '')) {
@@ -39,6 +49,18 @@ export function SubmitTool() {
       fetchWebsiteData(urlWithHttps);
     }
   }, [link]);
+
+  useEffect(() => {
+    if (focussed || fetchedData === null) {
+      return;
+    }
+    if (name === '') {
+      setName(fetchedData?.name ?? '');
+    }
+    if (description === '') {
+      setDescription(fetchedData?.description ?? '');
+    }
+  }, [fetchedData, focussed]);
 
   const ensureHttps = (url) => {
     if (!/^https?:\/\//i.test(url)) {
@@ -70,23 +92,28 @@ export function SubmitTool() {
       <form>
         <div className="submit-tool__form-content">
           <header className="submit-tool__header">Submit a tool</header>
+          <label htmlFor="submit-tool__link">Link</label>
           <input
             type="url"
-            id="submit-link"
-            placeholder="Link"
+            id="submit-tool__link"
+            placeholder="https://onlinetool.directory"
             value={displayedLink}
             onChange={handleLinkChange}
+            onFocus={() => setFocussed(true)}
+            onBlur={() => setFocussed(false)}
           />
+          <label htmlFor="submit-tool__name">Name</label>
           <input
             type="text"
             id="submit-tool__name"
-            placeholder="Name"
+            placeholder="Online Tool Directory"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
+          <label htmlFor="submit-tool__description">Description</label>
           <textarea
             id="submit-tool__description"
-            placeholder="Description"
+            placeholder="Get your work done better and faster than ever with the best tools on the internet."
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             rows={3}
