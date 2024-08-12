@@ -197,6 +197,25 @@ input {
   font-size: $small-font-size;
 }
 
+%input {
+  border: 1px solid rgba($white, 0.2);
+  border-radius: calc($spacing/2);
+  background-color: rgba($background-color, .15);
+  color: $background-color;
+  font-size: $regular-font-size;
+  font-family: $body-font;
+  margin-bottom: calc($spacing);
+  padding: $spacing;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  &:focus {
+    outline: none;
+    border-color: $white;
+  }
+}
+
 .filters__pills {
   display: flex;
   flex-wrap: wrap;

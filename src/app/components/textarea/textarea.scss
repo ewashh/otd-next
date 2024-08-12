@@ -1,0 +1,9 @@
+@import './../../global.scss';
+
+.textarea {
+  display: grid;
+
+  textarea {
+    @extend %input;
+  }
+}

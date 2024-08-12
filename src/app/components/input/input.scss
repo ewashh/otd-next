@@ -1,0 +1,9 @@
+@import './../../global.scss';
+
+.input {
+  display: grid;
+
+  input {
+    @extend %input;
+  }
+}

@@ -1,0 +1,28 @@
+@import './../../global.scss';
+
+.select {
+  display: grid;
+
+  select {
+    @extend %input;
+
+    // Add custom white arrow
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg%20xmlns="http://www.w3.org/2000/svg"%20width="292.362"%20height="292.362"%20viewBox="0%200%20292.362%20292.362"><path%20fill="%23ffffff"%20d="M287.825%2069.474L166.293%20191.006a17.372%2017.372%200%2001-24.578%200L4.537%2069.474C-.701%2064.236-.701%2055.508%204.537%2050.27l28.285-28.285c5.238-5.238%2013.966-5.238%2019.204%200L146.181%20116.14%20240.337%2021.985c5.238-5.238%2013.966-5.238%2019.204%200l28.285%2028.285c5.238%205.238%205.238%2013.966%200%2019.204z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right $spacing center;
+    background-size: 12px;
+  }
+
+  // Style options
+  option {
+    background-color: rgba($background-color, 0.15);
+    color: $background-color;
+    font-size: $regular-font-size;
+    font-family: $body-font;
+    padding: calc($spacing / 2);
+
+    &:hover {
+      background-color: rgba($background-color, 0.25);
+    }
+  }
+}

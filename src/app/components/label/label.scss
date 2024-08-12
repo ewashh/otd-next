@@ -1,0 +1,8 @@
+@import './../../global.scss';
+
+.label {
+  display: flex;
+  font-size: $small-font-size;
+  margin-bottom: calc($spacing/2);
+  margin-left: calc($spacing/2);
+}

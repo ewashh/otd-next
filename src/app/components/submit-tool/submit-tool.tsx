@@ -4,6 +4,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import '@/app/components/submit-tool/submit-tool.scss';
 import { ToolCard } from '../tool-card/tool-card';
 import { Button } from '../button/button';
+import { Input } from '../input/input';
+import { Textarea } from '../textarea/textarea';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Chip from '@mui/material/Chip';
+import MenuItem from '@mui/material/MenuItem';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import Box from '@mui/material/Box';
+import { Label } from '../label/label';
 
 export function SubmitTool() {
   const [fetching, setFetching] = useState(false);
@@ -87,13 +95,41 @@ export function SubmitTool() {
     setLink(value);
   };
 
+  // Select
+  const ITEM_HEIGHT = 48;
+  const ITEM_PADDING_TOP = 8;
+
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+        width: 250,
+      },
+    },
+  };
+
+  const categories = [ 'business', 'productivity', 'marketing', 'design', 'video', 'code', 'media resources', 'ecommerce', 'research', 'writing', 'communication', 'automation', 'files', 'website tools', 'education', 'hiring'];
+
+  const [personName, setPersonName] = React.useState<string[]>([]);
+
+  const handleChange = (event: SelectChangeEvent<typeof personName>) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonName(
+      // On autofill we get a stringified value.
+      typeof value === 'string' ? value.split(',') : value,
+    );
+  };
+
   return (
+    <>
     <section className="submit-tool">
       <form>
         <div className="submit-tool__form-content">
           <header className="submit-tool__header">Submit a tool</header>
-          <label htmlFor="submit-tool__link">Link</label>
-          <input
+          <Input
+            label="Link"
             type="url"
             id="submit-tool__link"
             placeholder="https://onlinetool.directory"
@@ -102,26 +138,53 @@ export function SubmitTool() {
             onFocus={() => setFocussed(true)}
             onBlur={() => setFocussed(false)}
           />
-          <label htmlFor="submit-tool__name">Name</label>
-          <input
+          <Input
+            label="Name"
             type="text"
             id="submit-tool__name"
             placeholder="Online Tool Directory"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <label htmlFor="submit-tool__description">Description</label>
-          <textarea
+          <Textarea
+            label="Description"
             id="submit-tool__description"
             placeholder="Get your work done better and faster than ever with the best tools on the internet."
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            rows={3}
           />
+          <Select
+            labelId="demo-multiple-chip-label"
+            id="demo-multiple-chip"
+            placeholder="Choose categories..."
+            multiple
+            value={personName}
+            onChange={handleChange}
+            input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
+            renderValue={(selected) => (
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                {selected.map((value) => (
+                  <Chip key={value} label={value} />
+                ))}
+              </Box>
+            )}
+            MenuProps={MenuProps}
+          >
+            {categories.map((category) => (
+              <MenuItem
+                key={category}
+                value={category}
+              >
+                {category}
+              </MenuItem>
+            ))}
+          </Select>
+          <Button text="Upload image" />
           <Button text="Submit to directory" />
         </div>
       </form>
       <ToolCard href={link || '/'} name={name || 'Default name'} description={description || 'Default description'} />
     </section>
+    </>
   );
 }

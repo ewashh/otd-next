@@ -10,7 +10,7 @@ export default function MainNav() {
       <ul className="main-nav__list">
         <div>
           <li><Link href="/directory">Directory</Link></li>
-          <li><a href="/">Submit a tool</a></li>
+          <li><a href="/submit-a-tool">Submit a tool</a></li>
         </div>
         <li>
           <a href="/" className="main-nav__logo">
