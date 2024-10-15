@@ -9,8 +9,8 @@ export function Filters({ currentCategory }: { currentCategory?: string }) {
     <section className="filters">
       <ul className="pills filters__pills">
         <li><Pill text="all" size="small" href="/directory" active={!currentCategory}></Pill></li>
-        {categories.map((category) => (
-          <li>
+        {categories.map((category, index) => (
+          <li key={index}>
             <Pill text={category} size="small" href={`/directory/${category}`} active={currentCategory ? decodeURIComponent(currentCategory) == category : false}></Pill>
           </li>
         ))}

@@ -15,8 +15,8 @@ export default function Home() {
       >
         <Button text="See latest tools" href="/directory"></Button>
         <ul className="pills main-header__pills">
-          {categories.map((category) => (
-            <li>
+          {categories.map((category, index) => (
+            <li key={index}>
               <Pill text={category} href={`/directory/${category}`}></Pill>
             </li>
           ))}

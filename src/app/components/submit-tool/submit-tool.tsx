@@ -11,7 +11,6 @@ import Chip from '@mui/material/Chip';
 import MenuItem from '@mui/material/MenuItem';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Box from '@mui/material/Box';
-import { Label } from '../label/label';
 
 export function SubmitTool() {
   const [fetching, setFetching] = useState(false);
@@ -70,23 +69,24 @@ export function SubmitTool() {
     }
   }, [fetchedData, focussed]);
 
-  const ensureHttps = (url) => {
+  const ensureHttps = (url: string) => {
     if (!/^https?:\/\//i.test(url)) {
       return `https://${url}`;
     }
     return url;
   };
 
-  const isValidURL = (string) => {
+  const isValidURL = (url: string): boolean => {
     try {
-      new URL(string);
+      new URL(url);
       return true;
     } catch (_) {
       return false;
     }
   };
+  
 
-  const handleLinkChange = (e) => {
+  const handleLinkChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value;
     setDisplayedLink(value);
     if (!value.startsWith('https://')) {
@@ -94,7 +94,7 @@ export function SubmitTool() {
     }
     setLink(value);
   };
-
+  
   // Select
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
