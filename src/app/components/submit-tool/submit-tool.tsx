@@ -183,7 +183,12 @@ export function SubmitTool() {
           <Button text="Submit to directory" />
         </div>
       </form>
-      <ToolCard href={link || '/'} name={name || 'Default name'} description={description || 'Default description'} />
+      <ToolCard
+        href={link || '/'}
+        name={name || 'Default name'}
+        description={description || 'Default description'}
+        categories={[]} 
+      />
     </section>
     </>
   );

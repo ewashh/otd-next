@@ -8,7 +8,15 @@ type Category = {
   name: string;
 };
 
-export function ToolCard({ name, description, categories, icon, href }: { name: string, description: string, categories: Category[], icon?: string | StaticImageData, href: string }) {
+interface ToolCardProps {
+  name: string;
+  description: string;
+  categories: Category[];
+  icon?: string | StaticImageData | null;
+  href: string;
+}
+
+export function ToolCard({ name, description, categories, icon, href }: ToolCardProps) {
   return (
     <a className={`tool-card`} href={`${href}?ref="onlinetool.directory"`}>
       <header className="tool-card__header">
