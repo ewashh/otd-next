@@ -2,7 +2,6 @@
 
 .main {
   &-nav {
-    padding: $spacing calc($spacing * 2.5);
     position: sticky;
     top: 0;
     left: 0;
@@ -10,6 +9,15 @@
     backdrop-filter: blur(3px);
     z-index: 2;
     border-bottom: 1px solid rgba($black, .1);
+
+    @media #{$mobile} {
+      padding: $spacing;
+    }
+
+    @media #{$desktop} {
+      padding: $spacing calc($spacing * 2.5);
+    }
+
 
     &__list {
       display: grid;
@@ -48,11 +56,28 @@
     &__logo {
       @extend %heading;
       font-size: $bigger-font-size !important;
-      margin: 0 auto;
       padding: 0;
+      margin-bottom: 0;
+
+      @media #{$desktop} {
+        margin: 0 auto;
+      }
 
       img {
         max-height: 1em;
+      }
+    }
+
+    &__top {
+      justify-content: space-between;
+      display: flex;
+      align-items: center;
+    }
+
+    &__inner {
+      &.mobile {
+        display: grid;
+        grid-gap: .5em;
       }
     }
   }

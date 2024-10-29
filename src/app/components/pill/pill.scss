@@ -7,6 +7,7 @@
   display: inline-block;
   padding: calc($spacing/6) $spacing calc($spacing/4) $spacing;
   margin: calc($spacing/5);
+  white-space: nowrap;
 
   &:hover {
     background-color: $black;

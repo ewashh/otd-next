@@ -3,11 +3,28 @@ import { Button } from '../button/button';
 import Link from 'next/link';
 import logo from '../../../../public/images/otd-logo.svg'
 import Image from 'next/image';
+import Hamburger from '../hamburger/hamburger';
 
 export default function MainNav() {
   return (
     <nav className="main-nav">
-      <ul className="main-nav__list">
+      <div className="main-nav__inner mobile">
+        <div className="main-nav__top">
+          <a href="/" className="main-nav__logo">
+            <Image src={logo} alt="OTD"></Image>
+          </a>
+          <Hamburger>
+            <ul>
+              <li><Link href="/directory">Directory</Link></li>
+              <li><a href="/submit-a-tool">Submit a tool</a></li>
+              <li><a href="/">Log in</a></li>
+              <li><Button text="Sign up" size="small"></Button></li>
+            </ul>
+          </Hamburger>
+        </div>
+        <input type="text" placeholder="Search..." className="search-input"></input>
+      </div>
+      <ul className="main-nav__list desktop">
         <div>
           <li><Link href="/directory">Directory</Link></li>
           <li><a href="/submit-a-tool">Submit a tool</a></li>

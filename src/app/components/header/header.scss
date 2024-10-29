@@ -7,7 +7,14 @@
     section {
       display: grid;
       grid-gap: calc($spacing * 2);
-      padding: calc($spacing * 5) calc($spacing * 10);
+
+      @media #{$mobile} {
+        padding: calc($spacing * 3) $spacing;
+      }
+
+      @media #{$desktop} {
+        padding: calc($spacing * 5) calc($spacing * 10);
+      }
 
       h1 {
         margin-bottom: 0;
@@ -22,8 +29,11 @@
     }
 
     &__search {
-      width: 50%;
       margin: 0 auto;
+
+      @media #{$desktop} {
+        width: 50%;
+      }
     }
   }
 }

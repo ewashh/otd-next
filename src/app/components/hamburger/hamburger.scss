@@ -1,0 +1,90 @@
+@import './../../global.scss';
+
+.hamburger {
+  &__icon {
+    transform: scale(0.35);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    margin-right: -10px;
+
+    div {
+      height: 12px;
+      background-color: #000;
+      margin-bottom: 12px;
+      transition: 0.3s ease transform, 0.3s ease top, 0.3s ease width, 0.3s ease right;
+      border-radius: 2px;
+      width: 60px;
+      position: relative;
+    }
+
+    div:first-child {
+      transform-origin: 0;
+    }
+
+    div:last-child {
+      margin-bottom: 0;
+      transform-origin: 60px;
+    }
+
+    &.open div:first-child {
+      top: -6px;
+      transform: rotateZ(45deg);
+    }
+
+    &.open div:nth-child(2) {
+      width: 85px;
+      top: 0;
+      right: 1px;
+      transform: rotateZ(-45deg);
+    }
+
+    &.open div:last-child {
+      top: 6px;
+      transform: rotateZ(45deg);
+    }
+  }
+
+  &__content {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: calc($spacing * 5.25);
+    padding: $spacing;
+    background: rgba($background-color, 0.95);
+    backdrop-filter: blur(3px);
+    box-sizing: border-box;
+    border-top: 1px solid rgba($black, .1);
+    border-bottom: 1px solid rgba($black, .1);
+
+    &::after {
+      content: "";
+      display: block;
+      background: rgba(5, 7, 15, 0.5);
+      height: 100vh;
+      width: 100vw;
+      position: absolute;
+      left: 0;
+      margin-top: $spacing;
+    }
+
+    ul {
+      li {
+        display: flex;
+
+        a {
+          padding: .75em;
+          margin: 0;
+
+          &.button {
+            margin: .75em;
+          }
+        }
+      }
+    }
+  }
+}

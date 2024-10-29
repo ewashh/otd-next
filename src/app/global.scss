@@ -12,18 +12,40 @@ $purple: #9071fb;
 $dark: #21242c;
 $grey: #b0bac5;
 
-$spacing: 1rem;
-$gutter: calc($spacing * 4);
-$section-padding: calc($spacing * 4);
+$mobile: "(max-width: 1023px)";
+$desktop: "(min-width: 1024px)";
+$large-desktop: "(min-width: 1280px)";
+
+@media #{$mobile} {
+  :root {
+    --spacing: 1rem;
+    --section-padding: var(--spacing);
+    --gutter: var(--spacing);
+
+    --large-font-size: 1.5rem;
+  }
+}
+
+@media #{$desktop} {
+  :root {
+    --spacing: 1rem;
+    --section-padding: calc(var(--spacing) * 4);
+    --gutter: calc(var(--spacing) * 4);
+
+    --large-font-size: 3rem;
+  }
+}
+
+$spacing: var(--spacing);
+
+$spacing: var(--spacing);
+$gutter: var(--gutter);
+$section-padding: var(--section-padding);
 $foreground-color: $black;
 $background-color: $light;
 $border-width: 2px;
 $border-radius: 10rem;
 $border: $black $border-width solid;
-
-$mobile: "(max-width: 1023px)";
-$desktop: "(min-width: 1024px)";
-$large-desktop: "(min-width: 1280px)";
 
 .color {
   &-yellow {
@@ -90,7 +112,7 @@ $large-desktop: "(min-width: 1280px)";
 $small-font-size: .85rem;
 $regular-font-size: 18px;
 $bigger-font-size: 2rem;
-$large-font-size: 3rem;
+$large-font-size: var(--large-font-size);
 $x-large-font-size: 6rem;
 $huge-font-size: 10vw;
 
@@ -127,6 +149,18 @@ $subheading-font: 'Bold', sans-serif;
 
 //Global
 
+@media #{$mobile} {
+  .desktop {
+    display: none !important;
+  }
+}
+
+@media #{$desktop} {
+  .mobile {
+    display: none !important;
+  }
+}
+
 * {
   transition: text-decoration-color .25s ease-in-out,
               background-color .25s ease-in-out,
@@ -151,7 +185,7 @@ h1 {
   font-size: $x-large-font-size;
 
   @media #{$mobile} {
-    font-size: 18vw;
+    font-size: 10vw;
   }
 }
 
@@ -187,14 +221,23 @@ ul {
 }
 
 input {
-  background-color: $white;
-  border: none;
+  background-color: rgba($black, .05);
+  border: rgba($black, .1) solid 1px;
   border-radius: $border-radius;
   height: fit-content;
-  padding: calc($spacing/2) $spacing;
   min-width: 10rem;
   min-height: calc($spacing * 1.75);
   font-size: $small-font-size;
+
+  @media #{$mobile} {
+    width: 100%;
+    box-sizing: border-box;
+    padding: $spacing;
+  }
+
+  @media #{$desktop} {
+    padding: calc($spacing/2) $spacing;
+  }
 }
 
 %input {
@@ -218,6 +261,13 @@ input {
 
 .filters__pills {
   display: flex;
-  flex-wrap: wrap;
   padding: 0 $section-padding;
+
+  @media #{$mobile} {
+    overflow: auto;
+  }
+
+  @media #{$desktop} {
+    flex-wrap: wrap;
+  }
 }

@@ -3,14 +3,17 @@
 .submit-tool {
   border-radius: 1rem;
   display: grid;
-  grid-template-columns: 2fr 1fr;
   align-items: center;
   grid-gap: $section-padding;
   background-color: $black;
   color: $white;
   text-align: left;
   padding: $section-padding;
-  margin: $gutter;
+  margin: $section-padding $gutter;
+
+  @media #{$desktop} {
+    grid-template-columns: 2fr 1fr;
+  }
 
   &__header {
     @extend %heading;

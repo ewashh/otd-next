@@ -2,7 +2,11 @@
 
 .tool-list {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: $spacing;
   padding: $section-padding;
+  grid-template-columns: repeat( auto-fit, minmax(15rem, 1fr) );
+
+  @media #{$desktop} {
+
+  }
 }
