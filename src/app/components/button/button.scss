@@ -1,25 +1,42 @@
 @import './../../global.scss';
 
 .button {
-  display: block;
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-self: flex-start;
   border-radius: $border-radius;
   border: $border;
   padding: calc($spacing * 1.25) calc($spacing * 2);
-  color: $white;
-  background-color: $foreground-color;
+  box-sizing: border-box;
 
   &:hover {
     cursor: pointer;
     opacity: .8;
   }
 
-  &--small {
-    padding: calc($spacing/2) calc($spacing * 1.5) !important;
-    min-height: calc($spacing * 1.7);
+  &.size {
+    &--small {
+      padding: calc($spacing/2) calc($spacing * 1.5) !important;
+      min-height: calc($spacing * 2.8);
+      font-size: $small-font-size;
+    }
+  
+    &--big {
+      font-size: $bigger-font-size;
+    }
   }
 
-  &--big {
-    font-size: $bigger-font-size;
+  &.style {
+    &--black {
+      color: $white;
+      background-color: $foreground-color;
+      border-color: $black;
+    }
+
+    &--white {
+      color: $foreground-color;
+      background-color: lighten($blue, 20%);
+      border-color: lighten($blue, 20%);
+    }
   }
 }

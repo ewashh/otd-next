@@ -1,0 +1,16 @@
+@import './../../global.scss';
+
+.filters__pills {
+  display: flex;
+  padding: 0 $section-padding;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media #{$mobile} {
+    overflow: auto;
+  }
+
+  @media #{$desktop} {
+    flex-wrap: wrap;
+  }
+}

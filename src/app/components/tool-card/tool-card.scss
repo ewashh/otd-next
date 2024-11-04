@@ -10,6 +10,8 @@
   flex-direction: column;
   padding: $spacing;
   text-align: left;
+  width: 100%;
+  box-sizing: border-box;
 
   &__header {
     display: grid;

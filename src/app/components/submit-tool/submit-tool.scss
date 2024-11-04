@@ -2,43 +2,48 @@
 
 .submit-tool {
   border-radius: 1rem;
-  display: grid;
-  align-items: center;
-  grid-gap: $section-padding;
   background-color: $black;
   color: $white;
   text-align: left;
   padding: $section-padding;
   margin: $section-padding $gutter;
 
-  @media #{$desktop} {
-    grid-template-columns: 2fr 1fr;
-  }
-
   &__header {
     @extend %heading;
     font-size: $large-font-size;
   }
 
-  &__form-content {
+  &__content {
     display: grid;
+    align-items: flex-start;
+    grid-gap: $section-padding;
+
+    @media #{$desktop} {
+      grid-template-columns: 2fr 1fr;
+    }
   }
 
-  .button {
-    background-color: $yellow;
-    color: $black;
-    margin: 0;
-    width: fit-content;
+  &__form-content {
+    display: grid;
+    grid-gap: $spacing;
   }
 }
 
 // Select
 .MuiInputBase-root {
   @extend %input;
-  width: 100%;
+  border: 1px solid rgba($white, 0.2);
+  background-color: rgba($background-color, .15);
+  color: $background-color;
+  font-size: $regular-font-size;
+  border-radius: 1rem;
+
+  input:focus {
+    border-color: $white;
+  }
 
   .MuiSelect-select {
-    padding: 0;
+    padding: $spacing;
   }
 
   .MuiChip-root {

@@ -11,6 +11,7 @@ import Chip from '@mui/material/Chip';
 import MenuItem from '@mui/material/MenuItem';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Box from '@mui/material/Box';
+import { Label } from '../label/label';
 
 export function SubmitTool() {
   const [fetching, setFetching] = useState(false);
@@ -125,70 +126,84 @@ export function SubmitTool() {
   return (
     <>
     <section className="submit-tool">
-      <form>
-        <div className="submit-tool__form-content">
-          <header className="submit-tool__header">Submit a tool</header>
-          <Input
-            label="Link"
-            type="url"
-            id="submit-tool__link"
-            placeholder="https://onlinetool.directory"
-            value={displayedLink}
-            onChange={handleLinkChange}
-            onFocus={() => setFocussed(true)}
-            onBlur={() => setFocussed(false)}
+      <header className="submit-tool__header">Submit a tool</header>
+      <div className="submit-tool__content">
+        <form>
+          <div className="submit-tool__form-content">
+            <Input
+              theme="dark"
+              label="Link"
+              type="url"
+              id="submit-tool__link"
+              placeholder="https://onlinetool.directory"
+              value={displayedLink}
+              onChange={handleLinkChange}
+              onFocus={() => setFocussed(true)}
+              onBlur={() => setFocussed(false)}
+            />
+            <Input
+              theme="dark"
+              label="Name"
+              type="text"
+              id="submit-tool__name"
+              placeholder="Online Tool Directory"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <Textarea
+              theme="dark"
+              label="Description"
+              id="submit-tool__description"
+              placeholder="Get your work done better and faster than ever with the best tools on the internet."
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            <div>
+            <Label text="Categories" id="categories-select" />
+            <Select
+              labelId="categories-select"
+              id="demo-multiple-chip"
+              placeholder="Choose categories..."
+              multiple
+              value={personName}
+              onChange={handleChange}
+              input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
+              renderValue={(selected) => (
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                  {selected.map((value) => (
+                    <Chip key={value} label={value} />
+                  ))}
+                </Box>
+              )}
+              MenuProps={MenuProps}
+            >
+              {categories.map((category) => (
+                <MenuItem
+                  key={category}
+                  value={category}
+                >
+                  {category}
+                </MenuItem>
+              ))}
+            </Select>
+            </div>
+            <div>
+              <Label text="Icon" id="submit-tool-icon" />
+              <Button style="white" size="small" text="Upload image" />
+            </div>
+            <Button style="white" text="Submit to directory" />
+          </div>
+        </form>
+        <div>
+          <Label text="Preview" id="tool-preview" />
+          <ToolCard
+            href={link || '/'}
+            name={name || 'Default name'}
+            description={description || 'Default description'}
+            categories={[]} 
           />
-          <Input
-            label="Name"
-            type="text"
-            id="submit-tool__name"
-            placeholder="Online Tool Directory"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <Textarea
-            label="Description"
-            id="submit-tool__description"
-            placeholder="Get your work done better and faster than ever with the best tools on the internet."
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-          <Select
-            labelId="demo-multiple-chip-label"
-            id="demo-multiple-chip"
-            placeholder="Choose categories..."
-            multiple
-            value={personName}
-            onChange={handleChange}
-            input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
-            renderValue={(selected) => (
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                {selected.map((value) => (
-                  <Chip key={value} label={value} />
-                ))}
-              </Box>
-            )}
-            MenuProps={MenuProps}
-          >
-            {categories.map((category) => (
-              <MenuItem
-                key={category}
-                value={category}
-              >
-                {category}
-              </MenuItem>
-            ))}
-          </Select>
-          <Button text="Upload image" />
-          <Button text="Submit to directory" />
         </div>
-      </form>
-      <ToolCard
-        href={link || '/'}
-        name={name || 'Default name'}
-        description={description || 'Default description'}
-        categories={[]} 
-      />
+      </div>
     </section>
     </>
   );

@@ -1,9 +1,16 @@
 import '@/app/components/button/button.scss';
 import Link from 'next/link';
 
-export function Button({ text, size = 'regular', href }: { text: string, size?: 'regular' | 'small' | 'big', href?: string }) {
+interface ButtonProps {
+  text: string,
+  size?: 'regular' | 'small' | 'big',
+  style?: 'black' | 'white',
+  href?: string
+}
+
+export function Button({ text, size = 'regular', href, style='black' }: ButtonProps ) {
   return (
-    <Link className={`button button--${size}`} href={href ? href : ''}>
+    <Link className={`button size--${size} style--${style}`} href={href ? href : ''}>
       {text}
     </Link>
   );

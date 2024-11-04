@@ -1,4 +1,4 @@
-import '@/app/components/pill/pill.scss';
+import '@/app/components/filters/filters.scss';
 import { Pill } from '../pill/pill';
 
 export function Filters({ currentCategory }: { currentCategory?: string }) {

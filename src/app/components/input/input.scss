@@ -2,6 +2,7 @@
 
 .input {
   display: grid;
+  width: 100%;
 
   input {
     @extend %input;

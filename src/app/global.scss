@@ -37,8 +37,6 @@ $large-desktop: "(min-width: 1280px)";
 }
 
 $spacing: var(--spacing);
-
-$spacing: var(--spacing);
 $gutter: var(--gutter);
 $section-padding: var(--section-padding);
 $foreground-color: $black;
@@ -165,7 +163,8 @@ $subheading-font: 'Bold', sans-serif;
   transition: text-decoration-color .25s ease-in-out,
               background-color .25s ease-in-out,
               color .25s ease-in-out,
-              border-color .25s ease-in-out;
+              border-color .25s ease-in-out,
+              opacity .25s ease-in-out;
 }
 
 body {
@@ -220,54 +219,65 @@ ul {
   }
 }
 
-input {
-  background-color: rgba($black, .05);
-  border: rgba($black, .1) solid 1px;
-  border-radius: $border-radius;
-  height: fit-content;
-  min-width: 10rem;
-  min-height: calc($spacing * 1.75);
-  font-size: $small-font-size;
-
-  @media #{$mobile} {
-    width: 100%;
-    box-sizing: border-box;
-    padding: $spacing;
-  }
-
-  @media #{$desktop} {
-    padding: calc($spacing/2) $spacing;
-  }
-}
-
 %input {
-  border: 1px solid rgba($white, 0.2);
-  border-radius: calc($spacing/2);
-  background-color: rgba($background-color, .15);
-  color: $background-color;
-  font-size: $regular-font-size;
   font-family: $body-font;
-  margin-bottom: calc($spacing);
-  padding: $spacing;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+  height: fit-content;
+  min-width: 10rem;
+  width: 100%;
+  min-height: calc($spacing * 1.75);
+  box-sizing: border-box;
 
   &:focus {
     outline: none;
     border-color: $white;
   }
-}
 
-.filters__pills {
-  display: flex;
-  padding: 0 $section-padding;
-
-  @media #{$mobile} {
-    overflow: auto;
+  &.size {
+    &--small {
+      font-size: $small-font-size;
+      border-radius: $border-radius;
+      min-height: calc($spacing * 2.8);
+  
+      @media #{$mobile} {
+        width: 100%;
+        box-sizing: border-box;
+        padding: $spacing;
+      }
+    
+      @media #{$desktop} {
+        padding: calc($spacing/2) calc($spacing * 1.5);
+      }
+    }
+  
+    &--regular {
+      font-size: $regular-font-size;
+      padding: $spacing;
+      border-radius: 1rem;
+    }
   }
 
-  @media #{$desktop} {
-    flex-wrap: wrap;
+  &.theme {
+    &--light {
+      border: rgba($black, .1) solid 1px;
+      background-color: rgba($black, .05);
+      color: $foreground-color;
+
+      &:focus {
+        border-color: $black;
+      }
+    }
+
+    &--dark {
+      border: 1px solid rgba($white, 0.2);
+      background-color: rgba($background-color, .15);
+      color: $background-color;
+
+      &:focus {
+        border-color: $white;
+      }
+    }
   }
 }

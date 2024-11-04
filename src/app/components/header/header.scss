@@ -8,6 +8,10 @@
       display: grid;
       grid-gap: calc($spacing * 2);
 
+      & > * {
+        justify-self: center;
+      }
+
       @media #{$mobile} {
         padding: calc($spacing * 3) $spacing;
       }
@@ -28,8 +32,9 @@
       justify-content: center;
     }
 
-    &__search {
+    #header-search {
       margin: 0 auto;
+      border-radius: $border-radius;
 
       @media #{$desktop} {
         width: 50%;

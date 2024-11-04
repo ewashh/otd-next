@@ -1,5 +1,6 @@
 import "@/app/global.scss";
 import Header from "../components/header/header";
+import { Input } from "../components/input/input";
 
 export default async function DirectoryLayout({children}: { children: React.ReactNode }
 ) { 
@@ -13,7 +14,7 @@ export default async function DirectoryLayout({children}: { children: React.Reac
         title="Directory"
         paragraph="Browse our latest additions, filter by category or simply search for what you need."
       >
-        <input type="text" placeholder="Search..." className="main-header__search search-input"></input>
+        <Input type="text" placeholder="Search..." id="header-search" value="" />
       </Header>
       {children}
     </>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import logo from '../../../../public/images/otd-logo.svg'
 import Image from 'next/image';
 import Hamburger from '../hamburger/hamburger';
+import { Input } from '../input/input';
 
 export default function MainNav() {
   return (
@@ -16,8 +17,8 @@ export default function MainNav() {
           <Hamburger>
             <ul>
               <li><Link href="/directory">Directory</Link></li>
-              <li><a href="/submit-a-tool">Submit a tool</a></li>
-              <li><a href="/">Log in</a></li>
+              <li><Link href="/submit-a-tool">Submit a tool</Link></li>
+              <li><Link href="/">Log in</Link></li>
               <li><Button text="Sign up" size="small"></Button></li>
             </ul>
           </Hamburger>
@@ -27,7 +28,7 @@ export default function MainNav() {
       <ul className="main-nav__list desktop">
         <div>
           <li><Link href="/directory">Directory</Link></li>
-          <li><a href="/submit-a-tool">Submit a tool</a></li>
+          <li><Link href="/submit-a-tool">Submit a tool</Link></li>
         </div>
         <li>
           <a href="/" className="main-nav__logo">
@@ -35,8 +36,8 @@ export default function MainNav() {
           </a>
         </li>
         <div>
-          <li><input type="text" placeholder="Search..." className="search-input"></input></li>
-          <li><a href="/">Log in</a></li>
+          <li><Input type="text" size="small" placeholder="Search..." id="nav-search-input" value="" /></li>
+          <li><Link href="/">Log in</Link></li>
           <li><Button text="Sign up" size="small"></Button></li>
         </div>
       </ul>
